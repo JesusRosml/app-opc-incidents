@@ -1,0 +1,8 @@
+
+Cd C:\xampp\python\app-opc-incidents\Server
+cd project
+venv\Scripts\activate 
+py .\manage.py runserver 8001
+
+
+Update maria db 10.6.15: https://www.youtube.com/watch?v=-GmyjYEfuzE
