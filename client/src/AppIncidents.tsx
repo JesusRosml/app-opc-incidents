@@ -1,7 +1,12 @@
+import { Route, Routes } from 'react-router';
+import { Authentication } from './Authentication';
+import { Home } from './Home';
+
 export const AppIncidents = () => {
   return (
-    <main>
-      <h1 className="text-2xl text-blue-700">Authentication</h1>
-    </main>
+    <Routes>
+      <Route index element={ <Authentication /> } />
+      <Route path='/home' element={ <Home /> } />
+    </Routes>
   );
 }
