@@ -1,0 +1,26 @@
+import subprocess
+
+def install_dependencies():
+    dependencies = [
+        "asgiref==3.8.1",
+        "blinker==1.9.0",
+        "click==8.1.8",
+        "colorama==0.4.6",
+        "Django==5.1.4",
+        "djangorestframework==3.15.2",
+        "Flask==3.1.0",
+        "itsdangerous==2.2.0",
+        "Jinja2==3.1.5",
+        "MarkupSafe==3.0.2",
+        "mysqlclient==2.2.7",
+        "PyMySQL==1.1.1",
+        "sqlparse==0.5.3",
+        "tzdata==2024.2",
+        "Werkzeug==3.1.3"
+    ]
+    
+    for dependency in dependencies:
+        subprocess.run(["pip", "install", dependency])
+
+if __name__ == "__main__":
+    install_dependencies()
