@@ -6,6 +6,8 @@ from .models import EmpleadosResguardantes,Usuarios #importar modelos
 from .serializers import EmpleadosResguardantesSerializer
 from django.contrib.auth.hashers import check_password
 from .models import EmpleadosResguardantes, Usuarios
+from .models import EmpleadoResguardante
+from .serializers import EmpleadoResguardanteSerializer
 import bcrypt
 
 
@@ -28,6 +30,7 @@ def auth_view(request):
     try:
         user = Usuarios.objects.get(correo_electronico=email)
         stored_password = user.Contraseña.encode('utf-8')  
+        
         
         if bcrypt.checkpw(password, stored_password):
             user_data = {
@@ -58,3 +61,10 @@ def auth_view(request):
             'message': 'Usuario no encontrado',
             'authentication': False
         })
+
+@api_view(['POST'])
+def buscar_empleados(request):
+    query = request.data.get('nameCompleted', '')
+    empleados = EmpleadoResguardante.objects.filter(Nombre__icontains=query)
+    serializer = EmpleadoResguardanteSerializer(empleados, many=True)
+    return Response(serializer.data)
