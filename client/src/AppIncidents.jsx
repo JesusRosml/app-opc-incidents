@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router';
-import { Authentication } from './Authentication';
-import { Home } from './Home';
 import { useState } from 'react';
+import { Authentication } from './pages/Authentication';
+import { Home } from './pages/Home';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 export const AppIncidents = () => {
