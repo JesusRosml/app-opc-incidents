@@ -9,7 +9,6 @@ class EmpleadosResguardantes(models.Model):
     Nombre = models.CharField(max_length=45)
     Primer_apellido = models.CharField(max_length=45)
     Segundo_apellido = models.CharField(max_length=45)
-    Num_seguro_social = models.CharField(max_length=45)
     Empresa_id = models.IntegerField()
     Obra_id = models.IntegerField()
     Correo_electronico = models.CharField(max_length=45)
@@ -63,24 +62,23 @@ class Empresa(models.Model):
     Nom_empresa = models.CharField(max_length=255)
     Nom_corto = models.CharField(max_length=50)
 
+    class Meta:
+        db_table = 'empresas'
+
 class Obra(models.Model):
     Obra_id = models.AutoField(primary_key=True)
     Nombre_obra = models.CharField(max_length=255)
     Nom_corto_obra = models.CharField(max_length=50)
     Num_obra = models.CharField(max_length=20)
 
+    class Meta:
+        db_table = 'obras'
+
 class Frente(models.Model):
     Frente_id = models.AutoField(primary_key=True)
     Nom_frente = models.CharField(max_length=255)
     numero_frente = models.IntegerField(null=True)
 
-class EmpleadoResguardante(models.Model):
-    Empleado_id = models.AutoField(primary_key=True)
-    Nombre = models.CharField(max_length=100)
-    Primer_apellido = models.CharField(max_length=100)
-    Segundo_apellido = models.CharField(max_length=100)
-    Empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
-    Obra = models.ForeignKey(Obra, on_delete=models.CASCADE)
-    Correo_electronico = models.CharField(max_length=255)
-    Frente = models.ForeignKey(Frente, on_delete=models.CASCADE)
-    User_id = models.IntegerField()
+    class Meta:
+        db_table = 'frente'
+
